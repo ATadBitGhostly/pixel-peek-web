@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      games: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          genre: string
+          hours_played: number
+          id: string
+          notes: string | null
+          platform: string
+          rating: number | null
+          status: Database["public"]["Enums"]["game_status"]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          genre: string
+          hours_played?: number
+          id?: string
+          notes?: string | null
+          platform: string
+          rating?: number | null
+          status?: Database["public"]["Enums"]["game_status"]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          genre?: string
+          hours_played?: number
+          id?: string
+          notes?: string | null
+          platform?: string
+          rating?: number | null
+          status?: Database["public"]["Enums"]["game_status"]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +67,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      game_status: "backlog" | "playing" | "completed" | "dropped" | "on_hold"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +194,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      game_status: ["backlog", "playing", "completed", "dropped", "on_hold"],
+    },
   },
 } as const
